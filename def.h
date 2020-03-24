@@ -152,12 +152,13 @@ int leftLeafSum(node* root)
 void cousin_nodes(node* root,int a,int b)
 {
   //assuming that a and b are present, and tree is not empty
-  node* crt =root; 
+  node* crt = root; 
   //I would like to count the number of steps to reach it
   int step_a=0,step_b=0;
-  if(crt->val==a || crt->val == b)
+  if(crt->val == a || crt->val == b)
   {
       printf("No root\n");
+      return ;
   }
   while(crt->val != a)
   {
@@ -171,6 +172,7 @@ void cousin_nodes(node* root,int a,int b)
       crt = crt->left;
     }
   }
+
   crt = root;
   while(crt->val != b)
   {
@@ -183,12 +185,13 @@ void cousin_nodes(node* root,int a,int b)
     {
       crt = crt->left;
     }
-  } 
+  }
   if(step_b == step_a)
   {
     int lr = 0;
     //to check if they aren't siblings
     crt = root;
+    printf("%d\n",root->val);
     while(crt)
     {
       if(crt->left)
@@ -205,12 +208,22 @@ void cousin_nodes(node* root,int a,int b)
         crt = crt->right;
       else 
         crt = crt->left;
-    }
-//    printf("\"%d\"",crt->val);
-    if(crt->left->val == b || crt->right->val == b) //they are siblings
+    }//breaking just a node previous to it
+    if(crt->left) //they are siblings
     {
-      printf("NO\n");
-      return ;
+      if(crt->left->val == b)
+      {
+        printf("NO\n");
+        return ;
+      }
+    }
+    if(crt->right)
+    {
+      if(crt->right->val == b)
+      {
+        printf("No\n");
+        return;
+      }
     }
     printf("Yes\n");
   }

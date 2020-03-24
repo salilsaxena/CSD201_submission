@@ -104,26 +104,6 @@ int isLeaf(node* root)
     return 0;
   }
 }
-void printLeaf(node* root)
-{
-  if(!root)
-  {
-    return ;
-  }
-  if(isLeaf(root))
-  //if(!root->left && !root->right)
-  {
-    printf("%d,",root->val);
-  }
-  if(root->left)
-  {
-    printLeaf(root->left);
-  }
-  if(root->right)
-  {
-    printLeaf(root->right);
-  }
-}
 int leftLeafSum(node* root)
 {
   int sum = 0;
